@@ -1,7 +1,36 @@
 import { useState } from 'react'
 const Button =props=>(<button onClick={props.onClick}>{props.text} {props.value}</button>)
+
+const StatisticLine = (props)=>{
+  return(
+    <tr><td>{props.name} </td><td>{props.value}</td></tr>
+  )
+}
+const Statistics = (props)=>{
+  if(props.all()>=1){
+  return(
+    <div>
+      <h1>statistics</h1>
+      <table>
+        <tbody>
+      <StatisticLine name={"good"} value={props.good}/>
+      <StatisticLine name={"neutral"} value={props.neutral}/>
+      <StatisticLine name={"bad"} value={props.bad}/>
+      <StatisticLine name={"all"} value={props.all()}/>
+      <StatisticLine name={"average"} value={props.average()}/>
+      <StatisticLine name={"positive"} value={props.positive()}/>
+      </tbody>
+      </table>
+    
+    </div>
+  )
+}else{
+  return(
+    <p>No Fedback given</p>
+  )
+}
+}
 const App = () => {
-  // save clicks of each button to its own state
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
@@ -32,13 +61,7 @@ const App = () => {
       <Button onClick={incGood} text={"good"}/>
       <Button onClick={incNeutral} text={"neutral"}/>
       <Button onClick={incBad} text={"bad"}/>
-      <h1>statistics</h1>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <p>all {all()}</p>
-      <p>average {average()}</p>
-      <p>positive {positive()}</p>
+      <Statistics good={good} bad ={bad} neutral={neutral} all={all} average={average} positive={positive}/>
        </div>
   )
 }
