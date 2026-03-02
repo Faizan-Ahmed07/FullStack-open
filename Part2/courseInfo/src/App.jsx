@@ -16,10 +16,13 @@ const Content = ({name,exercises})=>{
 }
 
 const Total = (props)=>{
-  let total = 0;
-  props.course.parts.map((item)=>{
-    total += item.exercises
-  })
+  const total = props.course.parts.reduce((s, p) => s+p.exercises,0)
+  console.log(total)
+
+  // props.course.parts.map((item)=>{
+  //   total += item.exercises
+  // })
+
   return(
     <h3>Total of {total} exercises</h3>
   )
