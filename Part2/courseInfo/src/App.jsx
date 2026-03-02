@@ -15,6 +15,16 @@ const Content = ({name,exercises})=>{
   )
 }
 
+const Total = (props)=>{
+  let total = 0;
+  props.course.parts.map((item)=>{
+    total += item.exercises
+  })
+  return(
+    <h3>Total of {total} exercises</h3>
+  )
+}
+
 const Course = ({course})=>{
   console.log(course, "From course")
   return(
@@ -24,6 +34,7 @@ const Course = ({course})=>{
         
         <Content name = {item.name} exercises = {item.exercises} key = {item.id} />
       )}
+      <Total course = {course}/>
     </div>
   )
 }
