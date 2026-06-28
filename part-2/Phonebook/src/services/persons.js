@@ -13,4 +13,16 @@ const add=(obj)=>{
         return r.data;
     })
 }
-export default {load,add}
+const del=(id)=>{
+    return axios.delete(`${baseUrl}/${id}`)
+    .then(r=>{
+        return r.data
+    })
+}
+const update=(id,obj)=>{
+        return axios.put(`${baseUrl}/${id}`,obj)
+    .then(r=>{
+        return r.data
+    })
+}
+export default {load,add,del,update}
