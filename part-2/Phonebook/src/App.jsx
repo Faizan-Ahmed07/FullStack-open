@@ -4,7 +4,7 @@ import personServices from './services/persons';
 import './index.css';
 
 
-const Filter = ({newFilter,setNewFilter,isFiltered,setFilter})=>{
+const Filter = ({newFilter,setNewFilter,setFilter})=>{
   const handleFilter=(e)=>{
       setNewFilter(e.target.value)
       if(e.target.value === ""){
@@ -14,7 +14,7 @@ const Filter = ({newFilter,setNewFilter,isFiltered,setFilter})=>{
   const numFilter=(e)=>{
     e.preventDefault()
     setFilter(true)
-    if(e.target.event===""){
+    if(newFilter===""){
       setFilter(false)
     }
   }
@@ -126,7 +126,7 @@ const App = () => {
   return (
     <div>
       <AddPopUp msg={addMsg} setAddMsg={setAddMsg}/>
-      <Filter isFiltered={isFiltered} setNewFilter={setNewFilter} isFiltered = {isFiltered} setFilter={setFilter}/>
+      <Filter isFiltered={isFiltered} setNewFilter={setNewFilter}  setFilter={setFilter}/>
       <PersonForm setAddMsg={setAddMsg} newName={newName} newNumber={newNumber} setNewName={setNewName} setNewNumber={setNewNumber} persons={persons} setPersons={setPersons}/>
       <Person isFiltered={isFiltered} persons={persons} newFilter={newFilter} setPersons={setPersons}/>
      </div>
